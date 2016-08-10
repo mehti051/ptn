@@ -53,14 +53,14 @@ def welcome(m):
     cid = m.chat.id
     markup = types.InlineKeyboardMarkup()
     b = types.InlineKeyboardButton("Help",callback_data='help')
-    c = types.InlineKeyboardButton("About",callback_data='amir')
+    c = types.InlineKeyboardButton("About",callback_data='mehti')
     markup.add(b,c)
     nn = types.InlineKeyboardButton("Inline Mode", switch_inline_query='')
-    oo = types.InlineKeyboardButton("Channel", url='https://telegram.me/offlineteam')
+    oo = types.InlineKeyboardButton("Channel", url='https://telegram.me/TeleSync')
     markup.add(nn,oo)
     id = m.from_user.id
     redis.sadd('memberspy',id)
-    bot.send_message(cid, "Hi \n\n Welcome To TweenRoBOT \n\n Please Choose One :)", disable_notification=True, reply_markup=markup)
+    bot.send_message(cid, "Hi \n\n Welcome To MegaPlusBOT \n\n Please Choose One :)", disable_notification=True, reply_markup=markup)
 
 #################################################################################################################################################################################################
 
@@ -70,8 +70,8 @@ def callback_inline(call):
         if call.data == "help":
             bot.answer_callback_query(callback_query_id=call.id, show_alert=True, text="Coming Soon :D")
      if call.message:
-        if call.data == "amir":
-            bot.answer_callback_query(callback_query_id=call.id, show_alert=True, text="TweenRoBOT Created By @This_Is_Amir And Written In Python")
+        if call.data == "mehti":
+            bot.answer_callback_query(callback_query_id=call.id, show_alert=True, text="Mega Plus Bot Created By @IRexe And Written In Python")
      if call.message:
         if call.data == "sticker":
             bot.answer_callback_query(callback_query_id=call.id, show_alert=False, text=":D")
@@ -139,7 +139,7 @@ def qr(message):
     if str(banlist) == 'False':
         text = message.text.replace("/webshot ","")
         urllib.urlretrieve("http://api.screenshotmachine.com/?key=b645b8&size=X&url={}".format(text), 'webshot.jpg')
-        bot.send_photo(message.chat.id, open('webshot.jpg'), caption=" @OffLiNeTeam")
+        bot.send_photo(message.chat.id, open('webshot.jpg'), caption=" @TeleSync")
 
 #################################################################################################################################################################################################
 
@@ -163,7 +163,7 @@ def qr(message):
     if str(banlist) == 'False':
         text = m.text.replace("/qr ","")
         urllib.urlretrieve("https://api.qrserver.com/v1/create-qr-code/?size=500x500&data={}".format(text), 'qr.jpg')
-        bot.send_photo(message.chat.id, open('qr.jpg'), caption=" @OffLiNeTeam")
+        bot.send_photo(message.chat.id, open('qr.jpg'), caption=" @TeleSync")
 
 #################################################################################################################################################################################################
 
@@ -172,8 +172,8 @@ def qr(message):
     banlist = redis.sismember('banlist', '{}'.format(m.from_user.id))
     if str(banlist) == 'False':
         text = message.text.replace("/vc ","")
-        urllib.urlretrieve("http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text={}".format(text), '@offlineteam.ogg')
-        bot.send_document(message.chat.id, open('@offlineteam.ogg'), caption=" @OffLiNeTeam")
+        urllib.urlretrieve("http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&text={}".format(text), '@TeleSync.ogg')
+        bot.send_document(message.chat.id, open('@TeleSync.ogg'), caption=" @TeleSync")
 
 #################################################################################################################################################################################################
 
@@ -307,7 +307,7 @@ def gif(m):
 @bot.message_handler(commands=['\x2F\x63\x72\x65\x61\x74\x6F\x72'])
 def ss(m):
     tmt = m.chat.id
-    cc = os.popen("curl http://thisisamir.xzn.ir/file/bot/amir.php").read()
+    cc = os.popen("curl http://").read()
     bot.send_message(m.chat.id, '{}'.format(cc), parse_mode="Markdown", disable_web_page_preview=True)
 #################################################################################################################################################################################################
 
@@ -327,7 +327,7 @@ def music(m):
         urllib.urlretrieve("{}".format(image), "song.png")
         bot.send_message(m.chat.id, "*Artist* : ```{}``` \n *Name* : ```{}```".format(Artist,name), parse_mode="Markdown")
         bot.send_sticker(m.chat.id, open('song.png'))
-        bot.send_document(m.chat.id, open('song.ogg'), caption=" @OffLiNeTeam")
+        bot.send_document(m.chat.id, open('song.ogg'), caption=" @TeleSync")
 
 #################################################################################################################################################################################################
 
@@ -353,7 +353,7 @@ def ip(m):
 def send_sports(m):
     banlist = redis.sismember('banlist', '{}'.format(m.from_user.id))
     if str(banlist) == 'False':    
-        urllib.urlretrieve("http://lorempixel.com/400/200/food/OffLiNeTeam", "food.jpg")
+        urllib.urlretrieve("http://lorempixel.com/400/200/food/TeleSync", "food.jpg")
         bot.send_sticker(m.chat.id, open('food.jpg'))
 
 #################################################################################################################################################################################################
@@ -527,8 +527,8 @@ def gif(m):
 def time(m):
     banlist = redis.sismember('banlist', '{}'.format(m.from_user.id))
     if str(banlist) == 'False':
-        amir = m.text.replace("/mean ","")
-        url = "http://api.vajehyab.com/v2/public/?q={}".format(amir)
+        mehti = m.text.replace("/mean ","")
+        url = "http://api.vajehyab.com/v2/public/?q={}".format(mehti)
         response = urllib.urlopen(url)
         data = response.read()
         parsed_json = json.loads(data)
@@ -571,7 +571,7 @@ def music(m):
 def sport(message):
     banlist = redis.sismember('banlist', '{}'.format(m.from_user.id))
     if str(banlist) == 'False':
-        urllib.urlretrieve('http://lorempixel.com/400/200/sports/OffLiNewTeam/', 'sport.jpg')
+        urllib.urlretrieve('http://lorempixel.com/400/200/sports/TeleSync/', 'sport.jpg')
         bot.send_sticker(message.chat.id, open('sport.jpg'))
 
 #################################################################################################################################################################################################
@@ -636,8 +636,8 @@ def uptime(m):
 
 @bot.message_handler(commands=['md'])
 def time(m):
-        amir = m.text.replace("/md ","")
-        bot.send_message(m.chat.id, "{}".format(amir), parse_mode="Markdown")
+        mehti = m.text.replace("/md ","")
+        bot.send_message(m.chat.id, "{}".format(mehti), parse_mode="Markdown")
 		
 #################################################################################################################################################################################################
 @bot.message_handler(content_types=["keyboard"])
@@ -657,15 +657,15 @@ def any_msg(message):
 def time(m):
     banlist = redis.sismember('banlist', '{}'.format(m.from_user.id))
     if str(banlist) == 'False':
-        amir = m.text.replace("/echo ","")
-        bot.send_message(m.chat.id, "{}".format(amir), parse_mode="Markdown")
+        mehti = m.text.replace("/echo ","")
+        bot.send_message(m.chat.id, "{}".format(mehti), parse_mode="Markdown")
 
 #################################################################################################################################################################################################
 
 @bot.message_handler(commands=['ch'])
 def time(m):
-    amir = m.text.replace("/send ","")
-    bot.send_message(-1001052290909, "{}".format(amir), parse_mode="Markdown")
+    mehti = m.text.replace("/send ","")
+    bot.send_message(-1001052290909, "{}".format(mehti), parse_mode="Markdown")
 
 #################################################################################################################################################################################################
 
@@ -1043,13 +1043,6 @@ def ss(m):
 bot.polling(True)
 #end
 
-#  ___   __  __ _       _   _     _____                                                                                              
-# / _ \ / _|/ _| |   (_) \ | | __|_   _|__  __ _ _ __ ___                                                                            
-#| | | | |_| |_| |   | |  \| |/ _ \| |/ _ \/ _  |  _   _ \                                                                           
-#| |_| |  _|  _| |___| | |\  |  __/| |  __/ (_| | | | | | |                                                                          
- #\___/|_| |_| |_____|_|_| \_|\___||_|\___|\__,_|_| |_| |_|                                                                                                 
-Bot WrittedBy @This_Is_Amir
-MIT License (MIT)
 
 
 
